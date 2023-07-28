@@ -1,7 +1,7 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
-
+  # Get all users
   get "/users" do
     users = User.all
     users.to_json
@@ -59,7 +59,7 @@ class ApplicationController < Sinatra::Base
 
   
   get "/reviews" do
-    reviews = Review.all
+    reviews = Review.all.order(id: :desc)
     reviews.to_json
   end
 
